@@ -1,0 +1,25 @@
+.main-container{
+    display: flex;
+    justify-content: center;
+}
+
+.main-block{
+    width: 960px;
+
+}
+
+.section-title{
+    width: 928px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+}
+
+.film-cards-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 32px;
+}
