@@ -22,17 +22,21 @@ export interface scheduleResponse{
     }[]
 }
 
-interface seance{
+export interface seance{
     time: string,
     hall:{
         name: string,
-        places: {
-            price: number,
-            type: string
-        }[]
+        places: Place[]
     }
 }
 
-// export interface FilmTimes{
+export interface Place{
+    price: number,
+    type: string
+}
 
-// }
+export interface selectedTime{
+    hall: string,
+    time: string,
+    seance: Place[][]
+}

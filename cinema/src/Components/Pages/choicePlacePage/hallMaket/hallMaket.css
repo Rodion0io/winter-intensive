@@ -1,0 +1,12 @@
+.point{
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: none;
+    background-color: #712D9C;
+}
+
+.sold{
+    background-color: #CED2DA;
+    cursor: no-drop;
+}

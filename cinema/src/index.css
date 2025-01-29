@@ -11,6 +11,15 @@
 
 }
 
+.section-title{
+    width: 928px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+}
+
 .active{
     color: #712D9C;
 }
