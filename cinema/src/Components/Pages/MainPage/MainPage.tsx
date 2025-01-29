@@ -15,6 +15,8 @@ const MainPage = () => {
         getFilms();
     }, []);
 
+    // console.log(typeof(filmsList));
+
     return (
         <>
             <section className="poster-section">

@@ -3,6 +3,8 @@ import './FilmCard.css'
 import { Link } from "react-router-dom"
 import { PART_URL_PHOTO } from "../../../../constants"
 import { AgeRating } from "../../../../RaitingList"
+import { Film } from "@/@types/interfacesFilms"
+
 
 interface IFilmCardProp{
     film: Film
@@ -16,8 +18,8 @@ const FilmCard = ({ film }: IFilmCardProp) => {
                 <div className="photo-block">
                     <img src={`${PART_URL_PHOTO}${film.img}`} alt="" className="film-photo"/>
                     <div className="meta-datas">
-                        {film.genres.map((item:string) => (
-                            <p className="genre">{item}</p>
+                        {film.genres.map((item:string, index) => (
+                            <p className="genre" key={index}>{item}</p>
                         ))}
                         {/* <p className="genre">фантастика</p> */}
                         <p className="country">{film.country.name}, {film.releaseDate.split(" ").slice(-1)}</p>
@@ -45,7 +47,7 @@ const FilmCard = ({ film }: IFilmCardProp) => {
                         ))} */}
                     {/* <p className="ratio">Kinopoisk - 8.4</p> */}
                 </div>
-                <Link to="/film" className="link full-infa-film" id={film.id}>Подробнее</Link>
+                <Link to={`/film/${film.id}`} className="link full-infa-film" id={film.id}>Подробнее</Link>
             </article>
         </>
     )

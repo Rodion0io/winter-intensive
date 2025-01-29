@@ -1,0 +1,61 @@
+.date{
+    background-color: #F3F4F6;
+    border-radius: 14px;
+    width: 728px;
+    padding: 2px;
+}
+
+.date-btn{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 16px;
+    padding-left: 16px;
+    border-radius: 14px;
+    border: none;
+    /* border-right: 1px solid #637083; */
+    color: #637083;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    width: 102px;
+    margin-right: 2px;
+}
+
+.btn-active{
+    background-color: #fff;
+    color: #141C24;
+}
+
+.hall-card{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hall-title{
+    color: #344051;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.time-container{
+    display: flex;
+    gap: 8px;
+}
+
+.time-btn{
+    border: 1px solid #CED2DA;
+    border-radius: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 16px;
+    padding-left: 16px;
+    background-color: #FFFFFF;
+}
+
+.time-active{
+    color: #FFFFFF;
+    background-color: #97A1AF;
+}

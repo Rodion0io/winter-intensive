@@ -1,0 +1,43 @@
+.section-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+.back-link{
+    display: flex;
+    align-items: center;
+    color: #637083;
+}
+
+.back-link:hover{
+    color: #637019;
+}
+
+.back-logo{
+    margin-right: 16px;
+}
+
+.concrete-film{
+    width: 300px;
+}
+
+.schedule-title{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #141C24;
+    margin-bottom: 24px;
+}
+
+
+.time-block{
+    margin-bottom: 24px;
+    width: 699px;
+    height: 356px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

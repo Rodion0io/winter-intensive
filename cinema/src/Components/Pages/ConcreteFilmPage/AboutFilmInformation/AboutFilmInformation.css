@@ -1,0 +1,22 @@
+.film-about{
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+.infa-title{
+    font-size: 32px;
+}
+
+.film-information{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.film-description{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #344051;
+}

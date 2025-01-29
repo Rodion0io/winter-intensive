@@ -12,7 +12,7 @@ function App() {
         
         <Route path='/' element={<Layout/>}>
           <Route index element={<MainPage/>}/>
-          <Route path='/film' element={<ConcreteFilmPage/>}/>
+          <Route path='/film/:id' element={<ConcreteFilmPage/>}/>
           <Route path='*' element={<h1>Not found</h1>}/>
         </Route>
       </Routes>
