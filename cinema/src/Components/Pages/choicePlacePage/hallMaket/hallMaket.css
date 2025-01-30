@@ -1,3 +1,78 @@
+.maket-hall{
+    width: 464px;
+    /* height: 368px; */
+    padding-top: 24px;
+}
+
+.screen-block{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.screen-maket-block{
+    width: 409px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+}
+
+.screen-text{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #344051;
+}
+
+.screen-maket{
+    width: 409px;
+    height: 16px;
+    border-radius: 16px;
+    background-color: #CED2DA;
+}
+
+.places{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.places-maket{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.places-row{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.places-row-container{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.places-text{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #344051;
+}
+
+.row-number{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #141C24;
+    text-align: center;
+    width: 9px;
+}
+
 .point{
     width: 16px;
     height: 16px;

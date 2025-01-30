@@ -13,8 +13,10 @@ const HallMaket = ({ places }: Props) => {
         <>
             <div className="maket-hall">
                 <div className="screen-block">
-                    <p className="screen-text">Экран</p>
-                    <div className="screen-maket"></div>
+                    <div className="screen-maket-block">
+                        <p className="screen-text">Экран</p>
+                        <div className="screen-maket"></div>
+                    </div>
                     <div className="places">
                         <span className="places-text">Ряд</span>
                         <div className="places-maket">
@@ -22,22 +24,22 @@ const HallMaket = ({ places }: Props) => {
                                 return (
                                     <div className="places-row">
                                         <span className="row-number">{index + 1}</span>
-                                        {item.map((place, index) => {
-                                            return (
-                                                <>
-                                                    <button 
-                                                    className={`point ${place.type === "BLOCKED" ? "sold" : ""}`} 
-                                                    id={(index + 1).toString()}
-                                                    ></button>
-                                                </>
-                                            )
-                                            
-                                        })}
-                                        
+                                        <div className="places-row-container">
+                                            {item.map((place, index) => {
+                                                return (
+                                                    <>
+                                                        <button 
+                                                        className={`point${place.type === "BLOCKED" ? " sold" : ""}`} 
+                                                        id={(index + 1).toString()}
+                                                        ></button>
+                                                    </>
+                                                )
+                                                
+                                            })}
+                                        </div>
                                     </div>
                                 )
-                                // console.log(item);
-                                // return 0;
+
                             })}
                         </div>
                     </div>

@@ -50,3 +50,13 @@
     flex-direction: column;
     gap: 4px;
 }
+
+.btn{
+    border-radius: 16px;
+    width: 172px;
+    height: 56px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 32px;
+    padding-left: 32px;
+}
