@@ -64,11 +64,13 @@
 .buttons-block{
     width: 368px;
     height: 88px;
+    margin-top: 20px;
 }
 
 .back{
     border: 1px solid #CED2DA;
     color: #344051;
+    margin-right: 24px;
 }
 
 .buy{
