@@ -1,14 +1,43 @@
 import "./choicePlacePage.css"
-import { selectedTime } from "@/@types/interfacesFilms";
+import { selectedTime, selectedPlace } from "@/@types/interfacesFilms";
 import HallMaket from "./hallMaket/HallMaket";
+import { colorTranslate } from "../../../constant/colorTranslate.ts";
+import { changeDateFormat } from "../../../utils/changeDateFormat.ts";
+import { modifyPlaceString } from "../../../utils/modifyPlaceString.ts";
 
 
-import { useLocation, Link } from "react-router-dom"
+import { useLocation, Link, useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
 
 const ChoicePlacePage = () => {
 
+    const [selectePlace, setSelectePlace] = useState<selectedPlace[]>([]);
+    const [currentPrice, setCurrentPrice] = useState<number>(0);
+
+    const {id} = useParams();
+
+    // ВРЕМЕННО
+    // const [sessiosInfa, setSessionInfa] = useState(0);
+
     const location = useLocation();
-    const getDatas: selectedTime = location.state
+    const getDatas: selectedTime = location.state;
+
+    const handlePlaceChange = (place: selectedPlace[]) => {
+        setSelectePlace(place);
+    }
+
+    useEffect(() => {
+        let newTotalPrice = 0;
+        selectePlace.map((item) => {
+            newTotalPrice += item.price;
+        })
+
+        setCurrentPrice((value) => value !== newTotalPrice ? newTotalPrice : value);
+    },[selectePlace])
+
+    
+    
+
 
     return (
         <>
@@ -18,26 +47,32 @@ const ChoicePlacePage = () => {
                         <h1 className="section-title">Выбор места</h1>
                         <div className="progress-bar-block">
                             <div className="progress-bar-block-head">Шаг 1 из 3</div>
-                            <progress className="progress-bar" value="70" max="100"></progress>
+                            <progress className="progress-bar" value="30" max="100" color="green"></progress>
                         </div>
-                        <HallMaket places={getDatas}/>
+                        <HallMaket 
+                        places={getDatas}
+                        choosePlace={handlePlaceChange}
+                        />
                         <div className="order-information">
                             <div className="order-information-block">
                                 <p className="title-block">Зал</p>
-                                <p className="order-params">Синий</p>
+                                <p className="order-params">{colorTranslate[getDatas.hall]}</p>
                             </div>
                             <div className="order-information-block">
                                 <p className="title-block">Дата и время</p>
-                                <p className="order-params">3 июля 13:45</p>
+                                <p className="order-params">{`${changeDateFormat(getDatas.date)} ${getDatas.time}`}</p>
                             </div>
                             <div className="order-information-block">
                                 <p className="title-block">Места</p>
-                                <p className="order-params">2 ряд - 8,9</p>
+                                {selectePlace.length !== 0 ? modifyPlaceString(selectePlace).map((item) => (
+                                    <p className="order-params">{item}</p>
+                                )) : null}
+                                
                             </div>
-                            <p className="total-price">Сумма:500 ₽</p>
+                            <p className="total-price">{`Сумма:${currentPrice} ₽`}</p>
                         </div>
                         <div className="buttons-block">
-                            <Link to="#" className="link btn back">Назад</Link>
+                            <Link to={`/film/${id}`} className="link btn back">Назад</Link>
                             <Link to="#" className="link btn buy">Купить</Link>
                         </div>
                     </div>

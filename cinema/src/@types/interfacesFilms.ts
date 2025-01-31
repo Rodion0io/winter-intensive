@@ -38,5 +38,18 @@ export interface Place{
 export interface selectedTime{
     hall: string,
     time: string,
+    date: string,
     seance: Place[][]
 }
+
+export interface selectedPlace{
+    place: string,
+    row: string,
+    price: number
+}
+
+// export interface metaInfaPlace{
+//     place: string,
+//     row: string, 
+//     price: number
+// }

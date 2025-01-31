@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import "./Schedule.css";
-import { scheduleResponse, Place, selectedTime } from "@/@types/interfacesFilms";
+import { scheduleResponse,  selectedTime } from "@/@types/interfacesFilms";
 import { colorTranslate } from "../../../../constant/colorTranslate.ts";
+import { getDate } from "../../../../utils/getDate.ts";
 
 
 interface Props {
@@ -14,14 +15,14 @@ interface Props {
 const Schedule = ({ data, dateChange, timeChange }: Props) => {
     // Начальное состояние
     const [activeDay, setActiveDay] = useState(data[0]["date"]);
-    const [activeTime, setActiveTime] = useState<selectedTime>({ hall: "", time: "", seance: []});
+    const [activeTime, setActiveTime] = useState<selectedTime>({ hall: "", time: "", date: "", seance: []});
 
     const currentHall = useRef<string>("");
     
 
     const handleDate = (date: string) => {
         setActiveDay(date);
-        setActiveTime({ hall: "", time: "", seance: []});
+        setActiveTime({ hall: "", time: "", date: "", seance: []});
         dateChange(date);
     }
 
@@ -40,7 +41,7 @@ const Schedule = ({ data, dateChange, timeChange }: Props) => {
                         className={`date-btn ${activeDay === item.date ? "btn-active" : ""}`}
                         onClick={() => {handleDate(item.date)}}
                     >
-                        {item["date"]}
+                        {getDate(item["date"])}
                     </button>
                 ))}
             </div>
@@ -69,7 +70,7 @@ const Schedule = ({ data, dateChange, timeChange }: Props) => {
                                     key={`${time.hall.name}-${time.time}-${index}`}
                                     className={`time-btn ${activeTime.hall === time.hall.name && activeTime.time === time.time ? "time-active" : ""}`}
                                     onClick={() =>
-                                        handleTime({ hall: time.hall.name, time: time.time, seance: time.hall.places})
+                                        handleTime({ hall: time.hall.name, time: time.time, date: item.date, seance: time.hall.places})
                                         // setActiveTime({ hall: time.hall.name, time: time.time})
                                     }
                                 >
@@ -89,7 +90,7 @@ const Schedule = ({ data, dateChange, timeChange }: Props) => {
                                     key={`${time.hall.name}-${time.time}-${index}`}
                                     className={`time-btn ${activeTime.hall === time.hall.name && activeTime.time === time.time ? "time-active" : ""}`}
                                     onClick={() =>
-                                        handleTime({ hall: time.hall.name, time: time.time, seance: time.hall.places})
+                                        handleTime({ hall: time.hall.name, time: time.time, date: item.date, seance: time.hall.places})
                                     }
                                 >
                                     {time.time}

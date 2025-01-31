@@ -6,7 +6,7 @@ import { getFilm } from "../../../API/getFilm.ts";
 import { useEffect, useState } from "react";
 import { getFilmSchedule } from "../../../API/getFilmSchedule.ts"
 import Schedule from "./Schedule/Schedule.tsx";
-import { selectedTime, Place } from "@/@types/interfacesFilms.ts";
+import { selectedTime } from "@/@types/interfacesFilms.ts";
 
 
 // Получаем id фильма и прокидываем компоентам выбора даты
@@ -15,7 +15,7 @@ const ConcreteFilmPage = () => {
     const [filmObject, setFilmObject] = useState([]);
     const [scheduleObject, setScheduleObject] = useState([]);
     const [selectedDay, setSelectedDay] = useState("");
-    const [selectedTime, setSelectedTime] = useState<selectedTime>({ hall: "", time: "", seance: []});
+    const [selectedTime, setSelectedTime] = useState<selectedTime>({ hall: "", time: "", date: "", seance: []});
 
     const {id} = useParams();
 
@@ -43,7 +43,6 @@ const ConcreteFilmPage = () => {
         setSelectedTime(time)
     }
 
-    // console.log(selectedTime);
 
     return (
         <>
@@ -70,10 +69,8 @@ const ConcreteFilmPage = () => {
                                  />}
                             </div>
 
-
-                            {/* to={`/film/${film.id}`} */}
                             {/* Класс временный, нужно придумать универсальное название */}
-                            <Link to="/film/:id/choice" state={selectedTime} className="link full-infa-film">Продолжить</Link>
+                            <Link to={`/film/${id}/choice`} state={selectedTime} className="link full-infa-film">Продолжить</Link>
                         </section>
                     </div>
                 </div>
