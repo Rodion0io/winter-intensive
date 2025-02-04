@@ -1,0 +1,38 @@
+.pay-date-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+.card-block{
+    width: 368px;
+    /* height: 212px; */
+    border-radius: 16px;
+    background-color: #F3F4F6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    gap: 16px;
+}
+
+.pay{
+    width: 320px;
+}
+
+.payDateClass{
+    width: 320px;
+}
+
+.bottom-part-card{
+    width: 320px;
+    display: flex;
+    gap: 24px;
+}
+
+.bottom{
+    width: 148px;
+}

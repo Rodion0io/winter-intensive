@@ -1,0 +1,11 @@
+.personal-date-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+.personalDataClass{
+    width: 368px;
+}

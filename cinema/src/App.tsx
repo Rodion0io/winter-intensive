@@ -5,6 +5,9 @@ import MainPage from './Components/Pages/MainPage/MainPage'
 import Layout from './Components/Layout/Layout'
 import ConcreteFilmPage from './Components/Pages/ConcreteFilmPage/ConcreteFilmPage'
 import ChoicePlacePage from './Components/Pages/choicePlacePage/choicePlacePage'
+import PersonalDatePage from './Components/Pages/personalDatePage/PersonalDatePage'
+import PayDatePage from './Components/Pages/payDatePage/PayDatePage'
+import SuccessPaymantPage from './Components/Pages/successPaymantPage/SuccessPaymantPage'
 
 function App() {
 
@@ -16,6 +19,9 @@ function App() {
           <Route index element={<MainPage/>}/>
           <Route path='/film/:id' element={<ConcreteFilmPage/>}/>
           <Route path='/film/:id/choice' element={<ChoicePlacePage/>}/>
+          <Route path='/film/:id/personaldate' element={<PersonalDatePage/>}/>
+          <Route path='/film/:id/paydate' element={<PayDatePage/>}/>
+          <Route path='/test' element={<SuccessPaymantPage/>}/>
           <Route path='*' element={<h1>Not found</h1>}/>
         </Route>
       </Routes>

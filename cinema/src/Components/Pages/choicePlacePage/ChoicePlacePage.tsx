@@ -1,9 +1,11 @@
 import "./choicePlacePage.css"
-import { selectedTime, selectedPlace } from "@/@types/interfacesFilms";
+import { selectedTime, selectedPlace, middleOrderTimePlace, ticket } from "@/@types/interfacesFilms";
 import HallMaket from "./hallMaket/HallMaket";
 import { colorTranslate } from "../../../constant/colorTranslate.ts";
 import { changeDateFormat } from "../../../utils/changeDateFormat.ts";
 import { modifyPlaceString } from "../../../utils/modifyPlaceString.ts";
+
+
 
 
 import { useLocation, Link, useParams } from "react-router-dom"
@@ -11,16 +13,28 @@ import { useEffect, useState } from "react";
 
 const ChoicePlacePage = () => {
 
+    const location = useLocation();
+    const getDatas: selectedTime = location.state;
+
     const [selectePlace, setSelectePlace] = useState<selectedPlace[]>([]);
     const [currentPrice, setCurrentPrice] = useState<number>(0);
+
+    const tickets: ticket[] = selectePlace.map(place => ({
+        row: parseInt(place.row),
+        column: parseInt(place.place)
+    }));
+
+    const [middleObjOrder, setMiddleObjOrder] = useState<middleOrderTimePlace>({
+        data: {date: getDatas.date, time: getDatas.time},
+        place: tickets
+    })
 
     const {id} = useParams();
 
     // ВРЕМЕННО
     // const [sessiosInfa, setSessionInfa] = useState(0);
 
-    const location = useLocation();
-    const getDatas: selectedTime = location.state;
+    
 
     const handlePlaceChange = (place: selectedPlace[]) => {
         setSelectePlace(place);
@@ -33,9 +47,15 @@ const ChoicePlacePage = () => {
         })
 
         setCurrentPrice((value) => value !== newTotalPrice ? newTotalPrice : value);
+        setMiddleObjOrder((prevState) => ({
+            ...prevState,
+            place: tickets
+        }));
     },[selectePlace])
 
-    
+    // console.log(getDatas)
+
+    console.log(middleObjOrder);
     
 
 
@@ -73,7 +93,7 @@ const ChoicePlacePage = () => {
                         </div>
                         <div className="buttons-block">
                             <Link to={`/film/${id}`} className="link btn back">Назад</Link>
-                            <Link to="#" className="link btn buy">Купить</Link>
+                            <Link to={`/film/${id}/personaldate`} className="link btn buy" state={middleObjOrder}>Купить</Link>
                         </div>
                     </div>
                 </div>
