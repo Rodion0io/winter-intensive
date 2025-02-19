@@ -18,3 +18,17 @@
     line-height: 32px;
     color: #141C24;
 }
+
+.details{
+    border: 1px solid #CED2DA;
+    padding-right: 32px;
+    padding-left: 32px;
+    margin-right: 24px;
+}
+
+.toMain{
+    background-color: #9534D2;
+    color: #fff;
+    padding-right: 32px;
+    padding-left: 32px;
+}

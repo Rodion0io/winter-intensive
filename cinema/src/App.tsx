@@ -25,8 +25,9 @@ function App() {
             <Route path='/film/:id/choice' element={<ChoicePlacePage/>}/>
             <Route path='/film/:id/personaldate' element={<PersonalDatePage/>}/>
             <Route path='/film/:id/paydate' element={<PayDatePage/>}/>
-            <Route path='/test' element={<SuccessPaymantPage/>}/>
+            <Route path='/success/:id' element={<SuccessPaymantPage/>}/>
             <Route path='*' element={<h1>Not found</h1>}/>
+            <Route path='error' element={<h1>Оплата не прошла!</h1>}/>
           </Route>
         </Routes>
       </Provider>

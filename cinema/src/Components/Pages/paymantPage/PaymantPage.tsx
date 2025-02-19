@@ -26,9 +26,9 @@ const SuccessPaymantPage = () => {
                             key={orderInformation?._id}
                             props={orderInformation}
                         />
-                        <div className="buttons-block">
-                            <Link to="#" className="link btn buy">Детали заказа</Link>
-                            <Link to="#" className="link btn buy">На главную</Link>
+                        <div className="buttons-block payment">
+                            <Link to="#" className="link btn details">Детали заказа</Link>
+                            <Link to="/" className="link btn toMain">На главную</Link>
                         </div>
                     </div>
                 </div>

@@ -85,10 +85,10 @@ const PayDatePage = () => {
                 // console.log((await response.json()).order);
 
                 dispatch(loadDatas(response))
-                navigate('/test')
+                navigate(`/success/${response._id}`)
             } 
             catch {
-                navigate("/");
+                navigate("/error");
             }
         }
     }
