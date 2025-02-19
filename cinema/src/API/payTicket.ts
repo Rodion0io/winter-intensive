@@ -2,6 +2,7 @@ import { URL } from "../constants";
 import { orderTicket } from "@/@types/interfacesFilms";
 
 
+
 export const payTicket = async (body: orderTicket) => {
     const header = {
         "Content-Type": "application/json"
@@ -12,5 +13,11 @@ export const payTicket = async (body: orderTicket) => {
         body: JSON.stringify(body),
         headers: header
     });
-    return response;
+
+    if (response.ok){
+        return response;
+    }
+    else{
+        throw new Error("Request failed");
+    }
 }

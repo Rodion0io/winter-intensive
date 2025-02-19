@@ -1,0 +1,20 @@
+.success-payment-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+.title{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.text-title{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #141C24;
+}

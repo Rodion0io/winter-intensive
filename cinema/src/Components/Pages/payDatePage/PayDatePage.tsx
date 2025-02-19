@@ -5,14 +5,25 @@ import ErrorMessage from "../../errorMessage/ErrorMessage";
 import { CARD_NUMBER_MASK, CARD_TERM_MASK, CARD_CVV_MASK,
     CODE_CARD_PLACEHOLDER, EXPIRE_DATE_PLACEHOLDER } from "../../../constants.ts";
 
-import { Link, useLocation, useParams } from "react-router-dom";
+import { loadDatas } from "../../../store/slices/payloadInforamtionSlice.ts";
+
+import { payTicket } from "../../../API/payTicket.ts";
+
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+
+import { useDispatch } from "react-redux";
 
 
 const PayDatePage = () => {
 
     const location = useLocation();
     const getDatas: middlePersDate = location.state;
+
+    const dispatch = useDispatch();
+
+    let navigate = useNavigate();
 
     const {id} = useParams();
 
@@ -26,12 +37,10 @@ const PayDatePage = () => {
     const [statusError, setStatusError] = useState<boolean>(false);
     const [middleObjOrder, setMiddleObjOrder] = useState<orderTicket>({
         filmId: id?.toString(),
-        person: getDatas.pearson,
+        person: getDatas?.pearson,
         debitCard: payDate,
-        seance: {date: getDatas.placeInfo.data.date, time: getDatas.placeInfo.data.time},
-        tickets: getDatas.placeInfo.place,
-        // data: {date: changeDateFormat(getDatas.date), time: getDatas.time},
-        // place: selectePlace
+        seance: {date: getDatas?.placeInfo.data.date, time: getDatas?.placeInfo.data.time},
+        tickets: getDatas?.placeInfo.place,
     })
 
     const handleChange = (fieldName: string, value: string) => {
@@ -59,10 +68,7 @@ const PayDatePage = () => {
         return result;
     }
 
-    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-
-        console.log(payDate.cvv);
-        console.log(CARD_CVV_MASK.test(payDate.cvv))
+    const handleClick = async (event: React.MouseEvent<HTMLAnchorElement>) => {
 
         if (checkValidate() === false){
             event.preventDefault();
@@ -72,10 +78,20 @@ const PayDatePage = () => {
         else{
             setStatusCode(100);
             setStatusError(false); 
+            
+            try {
+                const response = (await (await payTicket(middleObjOrder)).json()).order;
+
+                // console.log((await response.json()).order);
+
+                dispatch(loadDatas(response))
+                navigate('/test')
+            } 
+            catch {
+                navigate("/");
+            }
         }
     }
-
-    console.log(middleObjOrder)
 
     return (
         <>
@@ -135,7 +151,6 @@ const PayDatePage = () => {
                         {statusError ? <ErrorMessage errorCode={statusCode}/> : null}
 
                         <div className="buttons-block">
-                            {/* <Link to=`` className="link btn back">Назад</Link> */}
                             <Link to="#" className="link btn buy" onClick={handleClick}>Оплатить</Link>
                         </div>
                     </div>

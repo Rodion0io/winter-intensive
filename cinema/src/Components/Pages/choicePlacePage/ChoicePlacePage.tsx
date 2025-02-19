@@ -55,7 +55,7 @@ const ChoicePlacePage = () => {
 
     // console.log(getDatas)
 
-    console.log(middleObjOrder);
+    // console.log(middleObjOrder);
     
 
 

@@ -1,5 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
 
+import { Provider } from 'react-redux'
+
+import { store } from './store/store'
+
 import './App.css'
 import MainPage from './Components/Pages/MainPage/MainPage'
 import Layout from './Components/Layout/Layout'
@@ -7,24 +11,25 @@ import ConcreteFilmPage from './Components/Pages/ConcreteFilmPage/ConcreteFilmPa
 import ChoicePlacePage from './Components/Pages/choicePlacePage/choicePlacePage'
 import PersonalDatePage from './Components/Pages/personalDatePage/PersonalDatePage'
 import PayDatePage from './Components/Pages/payDatePage/PayDatePage'
-import SuccessPaymantPage from './Components/Pages/successPaymantPage/SuccessPaymantPage'
+import SuccessPaymantPage from './Components/Pages/paymantPage/PaymantPage'
 
 function App() {
 
   return (
     <>
-      <Routes>
-        
-        <Route path='/' element={<Layout/>}>
-          <Route index element={<MainPage/>}/>
-          <Route path='/film/:id' element={<ConcreteFilmPage/>}/>
-          <Route path='/film/:id/choice' element={<ChoicePlacePage/>}/>
-          <Route path='/film/:id/personaldate' element={<PersonalDatePage/>}/>
-          <Route path='/film/:id/paydate' element={<PayDatePage/>}/>
-          <Route path='/test' element={<SuccessPaymantPage/>}/>
-          <Route path='*' element={<h1>Not found</h1>}/>
-        </Route>
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path='/' element={<Layout/>}>
+            <Route index element={<MainPage/>}/>
+            <Route path='/film/:id' element={<ConcreteFilmPage/>}/>
+            <Route path='/film/:id/choice' element={<ChoicePlacePage/>}/>
+            <Route path='/film/:id/personaldate' element={<PersonalDatePage/>}/>
+            <Route path='/film/:id/paydate' element={<PayDatePage/>}/>
+            <Route path='/test' element={<SuccessPaymantPage/>}/>
+            <Route path='*' element={<h1>Not found</h1>}/>
+          </Route>
+        </Routes>
+      </Provider>
     </>
   )
 }

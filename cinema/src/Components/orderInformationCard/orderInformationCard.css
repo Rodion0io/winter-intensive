@@ -1,0 +1,42 @@
+.order-information-card{
+    width: 960px;
+    height: 398px;
+    border: 1px solid #E3E5E5;
+    border-radius: 24px;
+    padding-top: 24px;
+    padding-right: 48px;
+    padding-left: 48px;
+}
+
+.order-information-card-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.block-infa{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.block-title{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #637083;
+}
+
+.block-information{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #141C24;
+}
+
+.other-infa{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #97A1AF;
+}
