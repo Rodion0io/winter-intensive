@@ -4,6 +4,7 @@ import humanIcon from '../../../assets/Human.svg'
 import ticketIcon from '../../../assets/Ticket.svg'
 import entranceIcon from '../../../assets/EntranceIcon.png'
 import './Header.css'
+import React from "react";
 
 // Ссылки временные
 const Header = () => {
@@ -33,10 +34,10 @@ const Header = () => {
                                 {/*</div>*/}
                             </div>
                             <div className="navbar_right">
-                                <NavLink to="/exit" className="link navbar-link">
+                                <NavLink to="/login" className="link navbar-link">
                                     <img src={entranceIcon} alt="" className="link-pict"/>
                                     {/*Добавить проверку на авторизацию, если не авторизован-текст ссылки 'Вход'*/}
-                                    <span className="link-text">Выйти</span>
+                                    <span className="link-text">Войти</span>
                                 </NavLink>
                             </div>
                         </nav>

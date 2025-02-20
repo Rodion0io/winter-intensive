@@ -3,12 +3,13 @@ import { useState } from "react";
 import { IMaskInput } from "react-imask";
 
 import "./inputBlock.css";
+import React from "react";
 
 interface InputBlockParams {
     inputMask?: string,
     inputBlockClass: string;
     forName: string;
-    labelValue: string;
+    labelValue?: string;
     inputType: string;
     placeholderValue?: string;
     inputId: string;
@@ -64,9 +65,12 @@ const InputBlock = ({
 
     return (
         <div className={inputBlockClass}>
-            <label htmlFor={forName} className="label">
+            {labelValue !== undefined ? 
+                <label htmlFor={forName} className="label">
                 {labelValue}
-            </label>
+                </label>
+                : null
+        }
             {inputMask ? <IMaskInput
                 mask={inputMask}
                 className={inputClass}

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { Route, Routes } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
@@ -5,6 +7,7 @@ import { Provider } from 'react-redux'
 import { store } from './store/store'
 
 import './App.css'
+
 import MainPage from './Components/Pages/MainPage/MainPage'
 import Layout from './Components/Layout/Layout'
 import ConcreteFilmPage from './Components/Pages/ConcreteFilmPage/ConcreteFilmPage'
@@ -12,6 +15,8 @@ import ChoicePlacePage from './Components/Pages/choicePlacePage/choicePlacePage'
 import PersonalDatePage from './Components/Pages/personalDatePage/PersonalDatePage'
 import PayDatePage from './Components/Pages/payDatePage/PayDatePage'
 import SuccessPaymantPage from './Components/Pages/paymantPage/PaymantPage'
+import AuthPage from './Components/Pages/authPage/AuthPage'
+
 
 function App() {
 
@@ -26,6 +31,7 @@ function App() {
             <Route path='/film/:id/personaldate' element={<PersonalDatePage/>}/>
             <Route path='/film/:id/paydate' element={<PayDatePage/>}/>
             <Route path='/success/:id' element={<SuccessPaymantPage/>}/>
+            <Route path='/login' element={<AuthPage/>}/>
             <Route path='*' element={<h1>Not found</h1>}/>
             <Route path='error' element={<h1>Оплата не прошла!</h1>}/>
           </Route>

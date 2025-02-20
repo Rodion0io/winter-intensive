@@ -2,6 +2,7 @@ import './MainPage.css'
 import { getFilmList } from '../../../API/getFilmList'
 import { useEffect, useState } from 'react';
 import FilmCard from './FilmCard/FilmCard';
+import React from 'react';
 
 const MainPage = () => {
 

@@ -128,6 +128,12 @@ interface personShortModel{
     phone: string
 }
 
+interface personResponseModel extends personShortModel{
+    _id: string,
+    city: string,
+    email: string
+}
+
 export interface order{
     filmName: string,
     orderNumber: number,
@@ -137,4 +143,19 @@ export interface order{
     _id: string,
     created: string,
     updated: string
+}
+
+export interface authDatas{
+    phone: string,
+    code: number
+}
+
+export interface signInRespnse{
+    success: boolean,
+    user: personResponseModel,
+    token: string
+}
+
+export interface createOtp{
+    phone: string
 }
