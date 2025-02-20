@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "./authPage.css"
 
@@ -15,11 +17,15 @@ import { authDatas } from "../../../@types/interfacesFilms";
 
 import { signin } from "../../../API/signin";
 import { getOtpCode } from "../../../API/getOtpCode"
-import { useNavigate } from "react-router-dom";
+
+import { changeStatus } from "../../../store/slices/authSlice";
+
 
 const AuthPage = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    
     
 
     const [visibleCodeInput, setVisibleCodeInput] = useState(false);
@@ -27,7 +33,8 @@ const AuthPage = () => {
     const [visibilityErrorMessage, setVisibilityErrorMessage] = useState(false);
     const [statusCode, setStatusCode] = useState(0);
     const [buttonVisibility, setButtonVisibility] = useState(true);
-    const [resendButtonVisibility, setResendButtonVisibility] = useState(false);
+    const [currentTime, setCurrentTime] = useState(120);
+    const [requestFlag, setRequestFlag] = useState(false);
 
     const handleChange = (fieldName: string, value: string) => {
         let formattedValue = value;
@@ -44,7 +51,8 @@ const AuthPage = () => {
             setVisibilityErrorMessage(false)
             setStatusCode(0)
             setButtonVisibility(false)
-            await getOtpCode(authDatas.phone);
+            await getOtpCode({phone: authDatas.phone});
+            setCurrentTime(120);
         }
         else{
             setVisibilityErrorMessage(true)
@@ -55,9 +63,11 @@ const AuthPage = () => {
     const LogIn = async () => {
         if (OTP_CODE_MASK.test(authDatas.code.toString())){
             try{
-                await signin(authDatas);
+                const bearerToken = (await ((await signin(authDatas)).json())).token;
                 setVisibilityErrorMessage(false)
-                setStatusCode(0)
+                setStatusCode(0);
+                dispatch(changeStatus());
+                localStorage.setItem("token", bearerToken);
                 navigate("/");
             }
             catch{
@@ -71,17 +81,17 @@ const AuthPage = () => {
         }
     }
 
-    // useEffect(() => {
-    //     if (currentTime > 0 && requestFlag) {
-    //         const timer = setInterval(() => {
-    //             setCurrentTime(time => time - 1);
-    //         }, 1000);
+    useEffect(() => {
+        if (currentTime > 0 && requestFlag) {
+            const timer = setInterval(() => {
+                setCurrentTime(time => time - 1);
+            }, 1000);
 
-    //         return () => clearInterval(timer);
-    //     } else if (currentTime === 0) {
-    //         setRequestFlag(false);
-    //     }
-    // }, [currentTime, requestFlag]);
+            return () => clearInterval(timer);
+        } else if (currentTime === 0) {
+            setRequestFlag(false);
+        }
+    }, [currentTime, requestFlag]);
 
     return (
         <>
@@ -125,16 +135,20 @@ const AuthPage = () => {
                                 : null
                             }
                             {!buttonVisibility ? 
-                                <button className="btn enter">Войти</button>
+                                <button className="btn enter" onClick={() => LogIn()}>Войти</button>
                                 : null
                             }
-                            {!buttonVisibility ? 
-                                <p className="resend-timer">{`Запросить код повторно можно через 39 секунд`}</p>
+                            {!buttonVisibility && currentTime !== 0 ? 
+                                <p className="resend-timer">{`Запросить код повторно можно через ${currentTime} секунд`}</p>
                                 : null
                             }
                         </div>
                         {visibilityErrorMessage ? 
                             <p className="error-message">{statusCode === 1 ? NOT_VALID_PHONE : NOT_VALID_CODE}</p> 
+                            : null
+                        }
+                        {!buttonVisibility && currentTime === 0 ? 
+                            (<p className="resend-button">Отправить еще раз</p>)
                             : null
                         }
                     </div>

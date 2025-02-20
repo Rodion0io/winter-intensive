@@ -8,6 +8,7 @@ import { useSelector } from "react-redux"
 
 import { RootState } from "@/store/store"
 import { Link } from "react-router-dom"
+import React from "react"
 
 const SuccessPaymantPage = () => {
 
