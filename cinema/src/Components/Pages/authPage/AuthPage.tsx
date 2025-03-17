@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import "./authPage.css"
 
@@ -23,17 +22,15 @@ import { changeStatus } from "../../../store/slices/authSlice";
 
 const AuthPage = () => {
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     
     
-
     const [visibleCodeInput, setVisibleCodeInput] = useState(false);
     const [authDatas, setAuthDatas] = useState<authDatas>({phone: "", code: 0});
     const [visibilityErrorMessage, setVisibilityErrorMessage] = useState(false);
     const [statusCode, setStatusCode] = useState(0);
     const [buttonVisibility, setButtonVisibility] = useState(true);
-    const [currentTime, setCurrentTime] = useState(120);
+    const [currentTime, setCurrentTime] = useState<number>(120);
     const [requestFlag, setRequestFlag] = useState(false);
 
     const handleChange = (fieldName: string, value: string) => {
@@ -53,6 +50,7 @@ const AuthPage = () => {
             setButtonVisibility(false)
             await getOtpCode({phone: authDatas.phone});
             setCurrentTime(120);
+            setRequestFlag(true);
         }
         else{
             setVisibilityErrorMessage(true)
@@ -68,7 +66,7 @@ const AuthPage = () => {
                 setStatusCode(0);
                 dispatch(changeStatus());
                 localStorage.setItem("token", bearerToken);
-                navigate("/");
+                window.location.href = "/";
             }
             catch{
                 // Временно

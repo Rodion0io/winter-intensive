@@ -3,11 +3,15 @@ import cinemaLogo from '../../../assets/CinemaLogo.svg'
 import humanIcon from '../../../assets/Human.svg'
 import ticketIcon from '../../../assets/Ticket.svg'
 import entranceIcon from '../../../assets/EntranceIcon.png'
+import { logout } from "../../../utils/logout";
 import './Header.css'
 import React from "react";
 
 // Ссылки временные
 const Header = () => {
+
+    const token = localStorage.getItem('token');
+
     return (
         <>
             <header className="hero">
@@ -22,23 +26,37 @@ const Header = () => {
                                     </div>
                                     <img src={cinemaLogo} alt="logo" className="pict-logo"/>
                                 </NavLink>
-                                {/*<div className="user-links-block">*/}
-                                <NavLink to="/profile" className="link navbar-link">
+
+                                {token ? 
+                                    <>
+                                    <NavLink to="/profile" className="link navbar-link">
                                     <img src={humanIcon} alt="humanIcon" className="link-pict"/>
                                     <span className="link-text">Профиль</span>
-                                </NavLink>
-                                <NavLink to="/tickets" className="link navbar-link">
-                                    <img src={ticketIcon} alt="ticketIcon" className="link-pict"/>
-                                    <span className="link-text">Билеты</span>
-                                </NavLink>
+                                    </NavLink>
+                                    <NavLink to="/tickets" className="link navbar-link">
+                                        <img src={ticketIcon} alt="ticketIcon" className="link-pict"/>
+                                        <span className="link-text">Билеты</span>
+                                    </NavLink></>:
+                                    null
+                                }
+                                
                                 {/*</div>*/}
                             </div>
                             <div className="navbar_right">
-                                <NavLink to="/login" className="link navbar-link">
-                                    <img src={entranceIcon} alt="" className="link-pict"/>
-                                    {/*Добавить проверку на авторизацию, если не авторизован-текст ссылки 'Вход'*/}
-                                    <span className="link-text">Войти</span>
-                                </NavLink>
+                                {!token ? 
+                                    <NavLink to="/login" className="link navbar-link">
+                                        <img src={entranceIcon} alt="" className="link-pict"/>
+                                        <span className="link-text">Войти</span>
+                                    </NavLink>:
+                                    <button className="navber-link-logout" onClick={() => logout()}>
+                                        <span className="link-text">Выйти</span>
+                                    </button>
+                                    // <NavLink to="/" className="link navbar-link" onClick={() => logout()}>
+                                    //     <img src={entranceIcon} alt="" className="link-pict"/>
+                                    //     <span className="link-text">Выйти</span>
+                                    // </NavLink>
+                                }
+                                
                             </div>
                         </nav>
                     </div>

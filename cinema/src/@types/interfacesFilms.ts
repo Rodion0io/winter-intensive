@@ -159,3 +159,24 @@ export interface signInRespnse{
 export interface createOtp{
     phone: string
 }
+
+export interface UpdateProfileDto{
+    firstname: string,
+    middlename: string,
+    lastname: string,
+    email: string,
+    city?: string,
+    phone: string,
+}
+
+export interface SessionResponse{
+    success: boolean,
+    reason?: string[],
+    user: UpdateProfileDto
+}
+
+export interface UpdateProfileResponse{
+    success: boolean,
+    reason: string,
+    user: UpdateProfileDto
+}

@@ -17,6 +17,7 @@ interface InputBlockParams {
     inputClass: string;
     onInputChange?: (value: string) => void;
     maxLength?: number;
+    value?: string
 }
 
 const InputBlock = ({
@@ -31,8 +32,9 @@ const InputBlock = ({
     inputClass,
     onInputChange,
     maxLength,
+    value
 }: InputBlockParams) => {
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState(value ? value : "");
 
     const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
