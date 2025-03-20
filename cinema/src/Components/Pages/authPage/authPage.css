@@ -1,0 +1,17 @@
+.auth-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+.auth{
+    width: 328px;
+}
+
+.action-block{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

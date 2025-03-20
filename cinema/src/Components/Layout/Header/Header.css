@@ -54,3 +54,8 @@
     align-items: center;
     gap: 16px;
 }
+
+.navber-link-logout{
+    border: none;
+    background-color: #fff;
+}

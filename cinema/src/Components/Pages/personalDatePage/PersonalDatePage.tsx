@@ -7,6 +7,7 @@ import { PERSONAL_DATE_MASK, EMAIL_MASK, PHONE_NUMBER_MASK,
 
 import { Link, useLocation, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
+import React from "react";
 
 const PersonalDatePage = () => {
 
