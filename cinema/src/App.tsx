@@ -17,6 +17,7 @@ import PayDatePage from './Components/Pages/payDatePage/PayDatePage'
 import SuccessPaymantPage from './Components/Pages/paymantPage/PaymantPage'
 import AuthPage from './Components/Pages/authPage/AuthPage'
 import ProfilePage from './Components/Pages/profilePage/ProfilePage'
+import TicketsPage from './Components/Pages/ticketsPage/TicketsPage'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path='/success/:id' element={<SuccessPaymantPage/>}/>
             <Route path='/login' element={<AuthPage/>}/>
             <Route path='/profile' element={<ProfilePage/>}/>
+            <Route path='/tickets' element={<TicketsPage/>}/>
             <Route path='*' element={<h1>Not found</h1>}/>
             <Route path='error' element={<h1>Оплата не прошла!</h1>}/>
           </Route>

@@ -180,3 +180,18 @@ export interface UpdateProfileResponse{
     reason: string,
     user: UpdateProfileDto
 }
+
+export interface Ticket{
+    filmId: string,
+    row: number,
+    column: number,
+    seance: seanc,
+    phone: string,
+    status: string    
+}
+
+export interface CinemaOrder{
+    filmName: string,
+    orderNumber: number,
+    orders: Ticket[]
+}

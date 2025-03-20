@@ -5,3 +5,21 @@
     margin-right: 120px;
     margin-left: 120px;
 }
+
+.actions-block{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.logout{
+    background-color: #fff;
+    border: 1px solid #CED2DA;
+}
+
+.update{
+    background-color: #9534D2;
+    color: #fff;
+    border: none;
+    width: 200px ;
+}

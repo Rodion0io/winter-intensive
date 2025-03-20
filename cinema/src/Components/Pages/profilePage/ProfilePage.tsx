@@ -108,8 +108,8 @@ const ProfilePage = () => {
                         />
                         
                         <div className="actions-block">
-                            <button onClick={() => logout()}>Выйти</button>
-                            <button onClick={() => {updateProfile(userDatas, token), window.location.href = "/"}}>Обновить данные</button>
+                            <button className="btn logout" onClick={() => logout()}>Выйти</button>
+                            <button className="btn update" onClick={() => {updateProfile(userDatas, token), window.location.href = "/"}}>Обновить данные</button>
                         </div>
                     </div>
                 </div>
